@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Ruberto IT Solutions | Systems & Design</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -15,58 +16,99 @@
         }
         
         * { box-sizing: border-box; }
+        html, body { overflow-x: hidden; width: 100%; }
         body { font-family: 'Inter', -apple-system, sans-serif; margin: 0; background: var(--bg-light); color: #334155; line-height: 1.6; }
 
+        /* Launch Animation */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         header { background: linear-gradient(135deg, #0062cc, var(--radiant-blue)); color: white; padding: 3.5rem 1rem; text-align: center; }
+        .header-content { animation: fadeInUp 1s ease-out; }
+
         .business-logo { max-width: 130px; border-radius: 12px; margin-bottom: 1rem; background: white; padding: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 
-        .container { width: 92%; max-width: 900px; margin: auto; padding: 2rem 0; }
-        section { background: white; padding: 2rem; margin-bottom: 2rem; border-radius: 24px; border: 1px solid #e2e8f0; }
+        .container { width: 92%; max-width: 1000px; margin: auto; padding: 2rem 0; }
+        section { background: white; padding: 2rem; margin-bottom: 2rem; border-radius: 24px; border: 1px solid #e2e8f0; position: relative; }
+        
         h2 { color: var(--dark-it); font-size: 1.5rem; margin-top: 0; display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; }
         h2 i { color: var(--radiant-blue); }
 
-        /* Gallery & Explanations */
+        /* Portfolio Gallery */
         .swiper { width: 100%; border-radius: 15px; margin-bottom: 2rem; }
         .swiper-slide img { width: 100%; display: block; border-radius: 15px; }
         
-        .gallery-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .info-card { padding: 15px; border-left: 3px solid #e2e8f0; transition: 0.3s; }
+        .gallery-info { display: flex; flex-direction: column; gap: 15px; }
+        .info-card { padding: 15px; border-left: 3px solid #e2e8f0; transition: 0.3s; background: #fff; }
         .info-card:hover { border-left-color: var(--radiant-blue); background: #f0f7ff; }
-        .info-card h4 { margin: 0 0 5px 0; color: var(--dark-it); }
-        .info-card p { margin: 0; font-size: 0.85rem; color: #64748b; }
 
-        /* Pricing with Icons */
-        .price-card { border: 1px solid #f1f5f9; border-radius: 15px; padding: 1.2rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 15px; transition: 0.3s; }
-        .price-card:hover { border-color: var(--radiant-blue); transform: translateX(5px); }
-        .price-icon { background: #eff6ff; color: var(--radiant-blue); padding: 12px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        /* OPTIMIZED LIST: Fixed vertical flow, no internal scrolling */
+        .pricing-list { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+            width: 100%;
+        }
+        
+        .price-card { 
+            border: 1px solid #f1f5f9; 
+            border-radius: 15px; 
+            padding: 1.2rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            transition: 0.3s; 
+            background: #fff;
+            width: 100%;
+            height: auto; /* Ensures card grows with content, no internal scroll */
+            overflow: visible; 
+        }
+        
+        .price-card:hover { border-color: var(--radiant-blue); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .price-icon { background: #eff6ff; color: var(--radiant-blue); padding: 12px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .price-content { flex-grow: 1; }
         .price-content h4 { margin: 0; font-size: 1rem; color: var(--dark-it); }
         .price-content p { margin: 3px 0 0; font-size: 0.8rem; color: #64748b; }
-        .amount { font-weight: 800; color: var(--radiant-blue); font-size: 1.1rem; }
+        .amount { font-weight: 800; color: var(--radiant-blue); font-size: 1.1rem; min-width: fit-content; }
+
+        /* Desktop Layout Fixes */
+        @media (min-width: 850px) {
+            .pricing-list { display: grid; grid-template-columns: 1fr 1fr; }
+            .gallery-info { display: grid; grid-template-columns: 1fr 1fr 1fr; }
+        }
+
+        /* Mobile Layout: Stacked and Intact */
+        @media (max-width: 600px) {
+            .price-card { flex-direction: column; align-items: flex-start; text-align: left; }
+            .amount { width: 100%; border-top: 1px solid #f1f5f9; padding-top: 10px; margin-top: 5px; text-align: right; }
+            section { padding: 1.5rem; }
+            h2 { font-size: 1.3rem; }
+        }
 
         .whatsapp-float {
             position: fixed; bottom: 25px; right: 25px; background: var(--whatsapp-green); color: white; border-radius: 50px; padding: 14px 22px;
             font-weight: bold; text-decoration: none; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); z-index: 1000; display: flex; align-items: center; gap: 10px;
         }
 
-        .btn-pdf { display: block; text-align: center; background: var(--dark-it); color: white; padding: 16px; border-radius: 14px; text-decoration: none; font-weight: 700; margin-top: 1rem; }
+        .btn-pdf { display: block; text-align: center; background: var(--dark-it); color: white; padding: 16px; border-radius: 14px; text-decoration: none; font-weight: 700; margin-top: 1.5rem; }
 
-        @media (max-width: 600px) {
-            .price-card { flex-wrap: wrap; }
-            .amount { width: 100%; margin-top: 5px; border-top: 1px solid #f1f5f9; padding-top: 10px; }
-        }
+        footer { text-align: center; padding: 4rem 2rem; background: #fff; border-top: 1px solid #e2e8f0; margin-top: 3rem; }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="logo.png" alt="Ruberto IT Solutions" class="business-logo" onerror="this.style.display='none'">
-    <h1 style="margin: 0;">Ruberto IT Solutions</h1>
-    <p style="opacity: 0.85; margin-top: 5px;">Systems Administrator | Web & Graphic Designer</p>
+    <div class="header-content">
+        <img src="logo.png" alt="Ruberto IT Solutions" class="business-logo" onerror="this.style.display='none'">
+        <h1 style="margin: 0;">Ruberto IT Solutions</h1>
+        <p style="opacity: 0.85; margin-top: 5px;">Systems Administrator | Web & Graphic Designer</p>
+    </div>
 </header>
 
 <div class="container">
-    <section>
+    <section data-aos="fade-up">
         <h2><i data-lucide="layout"></i> Design Portfolio</h2>
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
@@ -77,121 +119,99 @@
         </div>
 
         <div class="gallery-info">
-            <div class="info-card">
+            <div class="info-card" data-aos="zoom-in">
                 <h4>Corporate Identity</h4>
                 <p>High-resolution vector logos and branding guidelines for new startups.</p>
             </div>
-            <div class="info-card">
+            <div class="info-card" data-aos="zoom-in" data-aos-delay="100">
                 <h4>Market & Retail</h4>
                 <p>Commercial flyers and digital marketing assets optimized for printing.</p>
             </div>
-            <div class="info-card">
+            <div class="info-card" data-aos="zoom-in" data-aos-delay="200">
                 <h4>UI/UX Layouts</h4>
                 <p>Visual designs for POS interfaces and custom business software.</p>
             </div>
         </div>
     </section>
 
-    <section id="rates">
+    <section id="rates" data-aos="fade-up">
         <h2><i data-lucide="tag"></i> Service Pricing</h2>
         
-        <div class="price-card">
-            <div class="price-icon"><i data-lucide="monitor"></i></div>
-            <div class="price-content">
-                <h4>Professional Website Design</h4>
-                <p>Responsive, mobile-friendly sites with custom SEO setup.</p>
+        <div class="pricing-list">
+            <div class="price-card" data-aos="fade-left" data-aos-delay="100">
+                <div class="price-icon"><i data-lucide="monitor"></i></div>
+                <div class="price-content">
+                    <h4>Professional Website Design</h4>
+                    <p>Responsive, mobile-friendly sites with custom SEO setup.</p>
+                </div>
+                <div class="amount">From N$ 1,500</div>
             </div>
-            <div class="amount">From N$ 1,500</div>
-        </div>
 
-        <div class="price-card">
-            <div class="price-icon"><i data-lucide="database"></i></div>
-            <div class="price-content">
-                <h4>POS & System Integration</h4>
-                <p>Finalizing software logic, database repair, and testing.</p>
+            <div class="price-card" data-aos="fade-left" data-aos-delay="200">
+                <div class="price-icon"><i data-lucide="database"></i></div>
+                <div class="price-content">
+                    <h4>POS & System Integration</h4>
+                    <p>Finalizing software logic, database repair, and testing.</p>
+                </div>
+                <div class="amount">Quote Based</div>
             </div>
-            <div class="amount">Quote Based</div>
-        </div>
 
-        <div class="price-card">
-            <div class="price-icon"><i data-lucide="palette"></i></div>
-            <div class="price-content">
-                <h4>Graphic Design (Logo/Flyer)</h4>
-                <p>Creative assets delivered in all high-quality formats.</p>
+            <div class="price-card" data-aos="fade-left" data-aos-delay="300">
+                <div class="price-icon"><i data-lucide="palette"></i></div>
+                <div class="price-content">
+                    <h4>Graphic Design (Logo/Flyer)</h4>
+                    <p>Creative assets delivered in all high-quality formats.</p>
+                </div>
+                <div class="amount">From N$ 250</div>
             </div>
-            <div class="amount">From N$ 250</div>
-        </div>
 
-        <div class="price-card">
-            <div class="price-icon"><i data-lucide="shield-check"></i></div>
-            <div class="price-content">
-                <h4>IT Support & Security</h4>
-                <p>Hardware audits, software maintenance, and troubleshooting.</p>
+            <div class="price-card" data-aos="fade-left" data-aos-delay="400">
+                <div class="price-icon"><i data-lucide="shield-check"></i></div>
+                <div class="price-content">
+                    <h4>IT Support & Security</h4>
+                    <p>Hardware audits, software maintenance, and troubleshooting.</p>
+                </div>
+                <div class="amount">N$ 800/mo</div>
             </div>
-            <div class="amount">N$ 800/mo</div>
         </div>
 
         <a href="Ruberto_IT_Solutions_Profile.pdf" class="btn-pdf" download>Download Full Company Profile (PDF)</a>
     </section>
 </div>
 
-<a href="https://wa.me/264 812251577?text=Hi%20Ruberto,%20I'm%20interested%20in%20your%20IT%20services." class="whatsapp-float" target="_blank">
-    <i data-lucide="message-circle"></i>
-    <span>Chat on WhatsApp</span>
-</a>
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-    // Initialize Icons
-    lucide.createIcons();
-
-    // Initialize Slider
-    var swiper = new Swiper(".mySwiper", {
-      loop: true,
-      autoplay: { delay: 4000 },
-      pagination: { el: ".swiper-pagination", clickable: true },
-    });
-</script>
-<footer style="text-align: center; padding: 4rem 2rem; background: #fff; border-top: 1px solid #e2e8f0; margin-top: 3rem;">
+<footer>
     <div style="margin-bottom: 20px;">
         <img src="logo.png" alt="Logo" style="height: 40px; opacity: 0.5; filter: grayscale(100%);" onerror="this.style.display='none'">
     </div>
-    
     <p style="font-weight: 700; color: var(--dark-it); margin-bottom: 5px;">Ruberto IT Solutions</p>
     <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 20px;">Precision Systems • Professional Branding • Web Development</p>
     
     <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
         <div style="display: flex; gap: 8px; color: var(--radiant-blue);">
-            <i data-lucide="creative-commons" style="width: 20px; height: 20px;"></i>
-            <i data-lucide="user-round" style="width: 20px; height: 20px;"></i>
-            <i data-lucide="copyright" style="width: 20px; height: 20px;"></i>
+            <i data-lucide="creative-commons"></i><i data-lucide="user-round"></i><i data-lucide="copyright"></i>
         </div>
-        <p style="font-size: 0.75rem; color: #94a3b8; max-width: 400px; margin: 0 auto;">
-            © 2026 Ruberto IT Solutions. Content on this site is licensed under a 
-            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="color: var(--radiant-blue); text-decoration: none;">Creative Commons Attribution 4.0 International License</a>.
+        <p style="font-size: 0.75rem; color: #94a3b8;">
+            © 2026 Ruberto IT Solutions. Content licensed under CC BY 4.0.
         </p>
     </div>
 </footer>
-<a href="https://wa.me/264810000000?text=Hi%20Ruberto,%20I'm%20interested%20in%20your%20IT%20services." class="whatsapp-float" target="_blank">
+
+<a href="https://wa.me/message/YGDINS26VXB5O1" class="whatsapp-float" target="_blank">
     <i data-lucide="message-circle"></i>
     <span>Chat on WhatsApp</span>
 </a>
 
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-    // Initialize Icons (This will now also draw the CC icon)
+    AOS.init({ duration: 800, once: false, offset: 100, mirror: true });
     lucide.createIcons();
-
-    // Initialize Slider
     var swiper = new Swiper(".mySwiper", {
       loop: true,
       autoplay: { delay: 4000, disableOnInteraction: false },
       pagination: { el: ".swiper-pagination", clickable: true },
     });
 </script>
-
-</body>
-</html>
 
 </body>
 </html>
