@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruberto IT Solutions | Professional Portfolio</title>
+    <style>
+        :root {
+            --radiant-blue: #007bff;
+            --dark-it: #0d1117;
+            --bg-light: #f8fafc;
+            --text-main: #334155;
+        }
+        
+        * { box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; margin: 0; background: var(--bg-light); color: var(--text-main); line-height: 1.5; }
+        
+        header { background: linear-gradient(135deg, #0062cc, var(--radiant-blue)); color: white; padding: 3rem 1.5rem; text-align: center; }
+        
+        /* Permanent Logo Styling */
+        .business-logo { 
+            max-width: 150px; 
+            height: auto; 
+            border-radius: 12px; 
+            margin-bottom: 1rem; 
+            display: block; 
+            margin-left: auto; 
+            margin-right: auto;
+            background: white;
+            padding: 5px;
+        }
+
+        nav { background: var(--dark-it); padding: 0.8rem; position: sticky; top: 0; z-index: 1000; overflow-x: auto; white-space: nowrap; display: flex; justify-content: center; }
+        nav a { color: #cbd5e1; margin: 0 12px; text-decoration: none; font-size: 0.85rem; font-weight: 500; }
+
+        .container { width: 92%; max-width: 1000px; margin: auto; padding: 1.5rem 0; }
+        section { background: white; padding: 2rem; margin-bottom: 1.5rem; border-radius: 16px; border: 1px solid #e2e8f0; }
+        h2 { color: var(--radiant-blue); font-size: 1.4rem; margin-top: 0; border-left: 4px solid var(--radiant-blue); padding-left: 12px; }
+
+        /* Responsive Gallery */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 1.5rem; }
+        .sample-card { border: 1px solid #f1f5f9; border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        
+        .sample-img-box { 
+            width: 100%; 
+            aspect-ratio: 16 / 10;
+            background: #f1f5f9; 
+            overflow: hidden;
+        }
+        .sample-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sample-info { padding: 1rem; }
+        .sample-info h4 { margin: 0 0 5px 0; color: var(--dark-it); }
+        .sample-info p { margin: 0; font-size: 0.9rem; color: #64748b; }
+
+        .table-wrapper { overflow-x: auto; margin-top: 1rem; }
+        table { width: 100%; border-collapse: collapse; min-width: 400px; }
+        th { background: #f8fafc; color: var(--dark-it); padding: 12px; text-align: left; font-size: 0.85rem; }
+        td { padding: 12px; border-top: 1px solid #f1f5f9; font-size: 0.9rem; }
+
+        .btn-download { display: block; text-align: center; background: var(--radiant-blue); color: white; padding: 14px; text-decoration: none; border-radius: 10px; font-weight: bold; margin-top: 1rem; }
+        footer { text-align: center; padding: 2rem; color: #94a3b8; font-size: 0.8rem; }
+
+        @media (max-width: 600px) {
+            nav { justify-content: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="logo.png" alt="Ruberto IT Solutions Logo" class="business-logo" onerror="this.style.display='none'">
+    <h1 style="margin: 0;">Ruberto IT Solutions</h1>
+    <p style="opacity: 0.9; font-size: 0.9rem;">Expert POS Systems & Digital Branding</p>
+</header>
+
+<nav>
+    <a href="#profile">Profile</a>
+    <a href="#portfolio">Design Showcase</a>
+    <a href="#rates">Rates</a>
+</nav>
+
+<div class="container">
+    <section id="profile">
+        <h2>Expertise</h2>
+        <p>Providing high-level technical solutions for retail markets. I specialize in finalizing <strong>Point of Sale (POS)</strong> software and creating <strong>Reward Card ecosystems</strong> that drive customer loyalty.</p>
+    </section>
+
+    <section id="portfolio">
+        <h2>Graphic Design Showcase</h2>
+        <div class="gallery-grid">
+            <div class="sample-card">
+                <div class="sample-img-box"><img src="sample1.jpg" alt="Design Sample 1"></div>
+                <div class="sample-info">
+                    <h4>Corporate Identity</h4>
+                    <p>Professional branding and logo systems.</p>
+                </div>
+            </div>
+            <div class="sample-card">
+                <div class="sample-img-box"><img src="sample2.jpg" alt="Design Sample 2"></div>
+                <div class="sample-info">
+                    <h4>Market Branding</h4>
+                    <p>High-impact promotional displays and flyers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="rates">
+        <h2>Standard Rates</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr><th>Service</th><th>Rate Basis</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>POS System Setup</td><td>Per Project</td></tr>
+                    <tr><td>Graphic Design</td><td>Per Asset</td></tr>
+                    <tr><td>System Audit</td><td>Per Session</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <a href="Ruberto_IT_Solutions_Profile.pdf" class="btn-download" download>Download Company Profile (PDF)</a>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2026 Ruberto IT Solutions</p>
+</footer>
+
+</body>
+</html>
