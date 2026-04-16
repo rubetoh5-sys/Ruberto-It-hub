@@ -3,134 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruberto IT Solutions | Professional Portfolio</title>
+    <title>Ruberto IT Solutions | Systems & Design</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
             --radiant-blue: #007bff;
             --dark-it: #0d1117;
             --bg-light: #f8fafc;
-            --text-main: #334155;
+            --whatsapp-green: #25d366;
         }
         
         * { box-sizing: border-box; }
-        body { font-family: 'Inter', -apple-system, sans-serif; margin: 0; background: var(--bg-light); color: var(--text-main); line-height: 1.5; }
+        body { font-family: 'Inter', -apple-system, sans-serif; margin: 0; background: var(--bg-light); color: #334155; line-height: 1.6; }
+
+        header { background: linear-gradient(135deg, #0062cc, var(--radiant-blue)); color: white; padding: 3.5rem 1rem; text-align: center; }
+        .business-logo { max-width: 130px; border-radius: 12px; margin-bottom: 1rem; background: white; padding: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+
+        .container { width: 92%; max-width: 900px; margin: auto; padding: 2rem 0; }
+        section { background: white; padding: 2rem; margin-bottom: 2rem; border-radius: 24px; border: 1px solid #e2e8f0; }
+        h2 { color: var(--dark-it); font-size: 1.5rem; margin-top: 0; display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; }
+        h2 i { color: var(--radiant-blue); }
+
+        /* Gallery & Explanations */
+        .swiper { width: 100%; border-radius: 15px; margin-bottom: 2rem; }
+        .swiper-slide img { width: 100%; display: block; border-radius: 15px; }
         
-        header { background: linear-gradient(135deg, #0062cc, var(--radiant-blue)); color: white; padding: 3rem 1.5rem; text-align: center; }
-        
-        /* Permanent Logo Styling */
-        .business-logo { 
-            max-width: 150px; 
-            height: auto; 
-            border-radius: 12px; 
-            margin-bottom: 1rem; 
-            display: block; 
-            margin-left: auto; 
-            margin-right: auto;
-            background: white;
-            padding: 5px;
+        .gallery-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .info-card { padding: 15px; border-left: 3px solid #e2e8f0; transition: 0.3s; }
+        .info-card:hover { border-left-color: var(--radiant-blue); background: #f0f7ff; }
+        .info-card h4 { margin: 0 0 5px 0; color: var(--dark-it); }
+        .info-card p { margin: 0; font-size: 0.85rem; color: #64748b; }
+
+        /* Pricing with Icons */
+        .price-card { border: 1px solid #f1f5f9; border-radius: 15px; padding: 1.2rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 15px; transition: 0.3s; }
+        .price-card:hover { border-color: var(--radiant-blue); transform: translateX(5px); }
+        .price-icon { background: #eff6ff; color: var(--radiant-blue); padding: 12px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        .price-content { flex-grow: 1; }
+        .price-content h4 { margin: 0; font-size: 1rem; color: var(--dark-it); }
+        .price-content p { margin: 3px 0 0; font-size: 0.8rem; color: #64748b; }
+        .amount { font-weight: 800; color: var(--radiant-blue); font-size: 1.1rem; }
+
+        .whatsapp-float {
+            position: fixed; bottom: 25px; right: 25px; background: var(--whatsapp-green); color: white; border-radius: 50px; padding: 14px 22px;
+            font-weight: bold; text-decoration: none; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); z-index: 1000; display: flex; align-items: center; gap: 10px;
         }
 
-        nav { background: var(--dark-it); padding: 0.8rem; position: sticky; top: 0; z-index: 1000; overflow-x: auto; white-space: nowrap; display: flex; justify-content: center; }
-        nav a { color: #cbd5e1; margin: 0 12px; text-decoration: none; font-size: 0.85rem; font-weight: 500; }
-
-        .container { width: 92%; max-width: 1000px; margin: auto; padding: 1.5rem 0; }
-        section { background: white; padding: 2rem; margin-bottom: 1.5rem; border-radius: 16px; border: 1px solid #e2e8f0; }
-        h2 { color: var(--radiant-blue); font-size: 1.4rem; margin-top: 0; border-left: 4px solid var(--radiant-blue); padding-left: 12px; }
-
-        /* Responsive Gallery */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 1.5rem; }
-        .sample-card { border: 1px solid #f1f5f9; border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-        
-        .sample-img-box { 
-            width: 100%; 
-            aspect-ratio: 16 / 10;
-            background: #f1f5f9; 
-            overflow: hidden;
-        }
-        .sample-img-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .sample-info { padding: 1rem; }
-        .sample-info h4 { margin: 0 0 5px 0; color: var(--dark-it); }
-        .sample-info p { margin: 0; font-size: 0.9rem; color: #64748b; }
-
-        .table-wrapper { overflow-x: auto; margin-top: 1rem; }
-        table { width: 100%; border-collapse: collapse; min-width: 400px; }
-        th { background: #f8fafc; color: var(--dark-it); padding: 12px; text-align: left; font-size: 0.85rem; }
-        td { padding: 12px; border-top: 1px solid #f1f5f9; font-size: 0.9rem; }
-
-        .btn-download { display: block; text-align: center; background: var(--radiant-blue); color: white; padding: 14px; text-decoration: none; border-radius: 10px; font-weight: bold; margin-top: 1rem; }
-        footer { text-align: center; padding: 2rem; color: #94a3b8; font-size: 0.8rem; }
+        .btn-pdf { display: block; text-align: center; background: var(--dark-it); color: white; padding: 16px; border-radius: 14px; text-decoration: none; font-weight: 700; margin-top: 1rem; }
 
         @media (max-width: 600px) {
-            nav { justify-content: flex-start; }
+            .price-card { flex-wrap: wrap; }
+            .amount { width: 100%; margin-top: 5px; border-top: 1px solid #f1f5f9; padding-top: 10px; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="logo.png" alt="Ruberto IT Solutions Logo" class="business-logo" onerror="this.style.display='none'">
+    <img src="logo.png" alt="Ruberto IT Solutions" class="business-logo" onerror="this.style.display='none'">
     <h1 style="margin: 0;">Ruberto IT Solutions</h1>
-    <p style="opacity: 0.9; font-size: 0.9rem;">Expert POS Systems & Digital Branding</p>
+    <p style="opacity: 0.85; margin-top: 5px;">Systems Administrator | Web & Graphic Designer</p>
 </header>
 
-<nav>
-    <a href="#profile">Profile</a>
-    <a href="#portfolio">Design Showcase</a>
-    <a href="#rates">Rates</a>
-</nav>
-
 <div class="container">
-    <section id="profile">
-        <h2>Expertise</h2>
-        <p>Providing high-level technical solutions for retail markets. I specialize in finalizing <strong>Point of Sale (POS)</strong> software and creating <strong>Reward Card ecosystems</strong> that drive customer loyalty.</p>
-    </section>
-
-    <section id="portfolio">
-        <h2>Graphic Design Showcase</h2>
-        <div class="gallery-grid">
-            <div class="sample-card">
-                <div class="sample-img-box"><img src="sample1.jpg" alt="Design Sample 1"></div>
-                <div class="sample-info">
-                    <h4>Corporate Identity</h4>
-                    <p>Professional branding and logo systems.</p>
-                </div>
+    <section>
+        <h2><i data-lucide="layout"></i> Design Portfolio</h2>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="sample1.jpg" alt="Flyer Concept"></div>
+                <div class="swiper-slide"><img src="sample2.jpg" alt="Market Branding"></div>
             </div>
-            <div class="sample-card">
-                <div class="sample-img-box"><img src="sample2.jpg" alt="Design Sample 2"></div>
-                <div class="sample-info">
-                    <h4>Market Branding</h4>
-                    <p>High-impact promotional displays and flyers.</p>
-                </div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <div class="gallery-info">
+            <div class="info-card">
+                <h4>Corporate Identity</h4>
+                <p>High-resolution vector logos and branding guidelines for new startups.</p>
+            </div>
+            <div class="info-card">
+                <h4>Market & Retail</h4>
+                <p>Commercial flyers and digital marketing assets optimized for printing.</p>
+            </div>
+            <div class="info-card">
+                <h4>UI/UX Layouts</h4>
+                <p>Visual designs for POS interfaces and custom business software.</p>
             </div>
         </div>
     </section>
 
     <section id="rates">
-        <h2>Standard Rates</h2>
-        <div class="table-wrapper">
-            <table>
-                <thead>
-                    <tr><th>Service</th><th>Rate Basis</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>POS System Setup</td><td>Per Project</td></tr>
-                    <tr><td>Graphic Design</td><td>Per Asset</td></tr>
-                    <tr><td>System Audit</td><td>Per Session</td></tr>
-                </tbody>
-            </table>
+        <h2><i data-lucide="tag"></i> Service Pricing</h2>
+        
+        <div class="price-card">
+            <div class="price-icon"><i data-lucide="monitor"></i></div>
+            <div class="price-content">
+                <h4>Professional Website Design</h4>
+                <p>Responsive, mobile-friendly sites with custom SEO setup.</p>
+            </div>
+            <div class="amount">From N$ 1,500</div>
         </div>
-        <a href="Ruberto_IT_Solutions_Profile.pdf" class="btn-download" download>Download Company Profile (PDF)</a>
+
+        <div class="price-card">
+            <div class="price-icon"><i data-lucide="database"></i></div>
+            <div class="price-content">
+                <h4>POS & System Integration</h4>
+                <p>Finalizing software logic, database repair, and testing.</p>
+            </div>
+            <div class="amount">Quote Based</div>
+        </div>
+
+        <div class="price-card">
+            <div class="price-icon"><i data-lucide="palette"></i></div>
+            <div class="price-content">
+                <h4>Graphic Design (Logo/Flyer)</h4>
+                <p>Creative assets delivered in all high-quality formats.</p>
+            </div>
+            <div class="amount">From N$ 250</div>
+        </div>
+
+        <div class="price-card">
+            <div class="price-icon"><i data-lucide="shield-check"></i></div>
+            <div class="price-content">
+                <h4>IT Support & Security</h4>
+                <p>Hardware audits, software maintenance, and troubleshooting.</p>
+            </div>
+            <div class="amount">N$ 800/mo</div>
+        </div>
+
+        <a href="Ruberto_IT_Solutions_Profile.pdf" class="btn-pdf" download>Download Full Company Profile (PDF)</a>
     </section>
 </div>
 
-<footer>
-    <p>&copy; 2026 Ruberto IT Solutions</p>
+<a href="https://wa.me/264810000000?text=Hi%20Ruberto,%20I'm%20interested%20in%20your%20IT%20services." class="whatsapp-float" target="_blank">
+    <i data-lucide="message-circle"></i>
+    <span>Chat on WhatsApp</span>
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    // Initialize Icons
+    lucide.createIcons();
+
+    // Initialize Slider
+    var swiper = new Swiper(".mySwiper", {
+      loop: true,
+      autoplay: { delay: 4000 },
+      pagination: { el: ".swiper-pagination", clickable: true },
+    });
+</script>
+<footer style="text-align: center; padding: 4rem 2rem; background: #fff; border-top: 1px solid #e2e8f0; margin-top: 3rem;">
+    <div style="margin-bottom: 20px;">
+        <img src="logo.png" alt="Logo" style="height: 40px; opacity: 0.5; filter: grayscale(100%);" onerror="this.style.display='none'">
+    </div>
+    
+    <p style="font-weight: 700; color: var(--dark-it); margin-bottom: 5px;">Ruberto IT Solutions</p>
+    <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 20px;">Precision Systems • Professional Branding • Web Development</p>
+    
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+        <div style="display: flex; gap: 8px; color: var(--radiant-blue);">
+            <i data-lucide="creative-commons" style="width: 20px; height: 20px;"></i>
+            <i data-lucide="user-round" style="width: 20px; height: 20px;"></i>
+            <i data-lucide="copyright" style="width: 20px; height: 20px;"></i>
+        </div>
+        <p style="font-size: 0.75rem; color: #94a3b8; max-width: 400px; margin: 0 auto;">
+            © 2026 Ruberto IT Solutions. Content on this site is licensed under a 
+            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="color: var(--radiant-blue); text-decoration: none;">Creative Commons Attribution 4.0 International License</a>.
+        </p>
+    </div>
 </footer>
+<a href="https://wa.me/264810000000?text=Hi%20Ruberto,%20I'm%20interested%20in%20your%20IT%20services." class="whatsapp-float" target="_blank">
+    <i data-lucide="message-circle"></i>
+    <span>Chat on WhatsApp</span>
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    // Initialize Icons (This will now also draw the CC icon)
+    lucide.createIcons();
+
+    // Initialize Slider
+    var swiper = new Swiper(".mySwiper", {
+      loop: true,
+      autoplay: { delay: 4000, disableOnInteraction: false },
+      pagination: { el: ".swiper-pagination", clickable: true },
+    });
+</script>
+
+</body>
+</html>
 
 </body>
 </html>
